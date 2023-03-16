@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/tareas')->name('tareas.')->group(function(){
+    Route::get('/', 'TodoController@index')->name('index');
+    Route::post('/', 'TodoController@store')->name('store');
+    Route::patch('/{tarea}', 'TodoController@update')->name('update');
+    Route::delete('/{tarea}', 'TodoController@destroy')->name('delete');
 });
